@@ -1,0 +1,26 @@
+{
+  "name": "create-ahq-store",
+  "version": "0.0.1",
+  "description": "The creation tool for AHQ Store Apps",
+  "main": "index.js",
+  "scripts": {
+    "create-ahq-store": "node ./create.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahqsoftwares/ahqstore-app-framework.git"
+  },
+  "author": "AHQ Store",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ahqsoftwares/ahqstore-app-framework/issues"
+  },
+  "homepage": "https://github.com/ahqsoftwares/ahqstore-app-framework#readme",
+  "bin": {
+    "create-ahq-store": "create.js"
+  },
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "inquirer": "^9.2.7"
+  }
+}

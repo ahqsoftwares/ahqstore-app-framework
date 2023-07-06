@@ -1,0 +1,30 @@
+{
+  "name": "framework",
+  "version": "0.0.1",
+  "description": "The AHQ Store Framework ",
+  "main": "index.js",
+  "scripts": {
+    "test": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahqsoftwares/ahqstore-app-framework.git"
+  },
+  "keywords": [
+    "framework",
+    "ahq",
+    "store",
+    "store",
+    "store",
+    "app"
+  ],
+  "author": "AHQ Store",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ahqsoftwares/ahqstore-app-framework/issues"
+  },
+  "homepage": "https://github.com/ahqsoftwares/ahqstore-app-framework#readme",
+  "dependencies": {
+    "electron": "^25.2.0"
+  }
+}
