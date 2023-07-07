@@ -2,3 +2,4 @@
 ./framework/js/node_modules
 ./store_js/js/node_modules
 target
+/SECRET

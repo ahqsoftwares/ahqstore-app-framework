@@ -20,7 +20,7 @@ fn main() {
         .replace("\\framework.exe", "");
 
     if let Ok(mut x) = Command::new(format!("{}\\node\\node.exe", &exe))
-        .arg(".")
+        .arg("index.js")
         .args(args)
         .current_dir(format!("{}\\js", &exe))
         .spawn()

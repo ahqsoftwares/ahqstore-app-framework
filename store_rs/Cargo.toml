@@ -1,0 +1,13 @@
+[package]
+name = "store_rs"
+description = "The full stack crate for interfacing with the AHQ Store Framework APi (Windows)"
+license = "MIT"
+authors = ["AHQ"]
+version = "0.1.0"
+edition = "2021"
+repository = "https://github.com/ahqsoftwares/ahqstore-app-framework"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+store_rs_core = "0.1.0"

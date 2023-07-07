@@ -9,17 +9,19 @@ fn main() {
     copy_dir_all("./js", format!("./target/{}/js", &out), true).unwrap();
     copy_dir_all("./node", format!("./target/{}/node", &out), false).unwrap();
 
-    let success = Command::new("powershell")
-        .args(["npm", "install"])
-        .current_dir(format!("./target/{}/js", &out))
-        .spawn()
-        .unwrap()
-        .wait()
-        .unwrap()
-        .success();
+    if &format!("{}", &out) != "debug" {
+        let success = Command::new("powershell")
+            .args(["npm", "install"])
+            .current_dir(format!("./target/{}/js", &out))
+            .spawn()
+            .unwrap()
+            .wait()
+            .unwrap()
+            .success();
 
-    if !success {
-        panic!("Error building post install stuff");
+        if !success {
+            panic!("Error building post install stuff");
+        }
     }
 }
 
@@ -28,7 +30,12 @@ fn copy_dir_all(
     dst: impl AsRef<Path>,
     ignore_node_modules: bool,
 ) -> std::io::Result<()> {
-    remove_dir_all(&dst).unwrap_or(());
+    let out = env::var("PROFILE").unwrap();
+    
+    if &format!("{out}") != "debug" {
+        remove_dir_all(&dst).unwrap_or(());
+    }
+    
     create_dir_all(&dst)?;
 
     for entry in read_dir(src)? {
