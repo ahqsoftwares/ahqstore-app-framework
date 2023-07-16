@@ -1,5 +1,5 @@
 {
-  "name": "store.js",
+  "name": "ahqstore.js",
   "version": "0.10.0-alpha.1",
   "description": "The full stack package for interfacing with the AHQ Store Framework APi (Windows)",
   "main": "index.js",
