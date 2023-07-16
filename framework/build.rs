@@ -31,11 +31,11 @@ fn copy_dir_all(
     ignore_node_modules: bool,
 ) -> std::io::Result<()> {
     let out = env::var("PROFILE").unwrap();
-    
+
     if &format!("{out}") != "debug" {
         remove_dir_all(&dst).unwrap_or(());
     }
-    
+
     create_dir_all(&dst)?;
 
     for entry in read_dir(src)? {

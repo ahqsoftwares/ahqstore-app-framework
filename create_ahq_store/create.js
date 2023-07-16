@@ -15,7 +15,7 @@ async function esRequire(package, def = true) {
     const inquirer = await esRequire("inquirer");
 
     console.log(chalk.green("-----------------------------------------"));
-    console.log(chalk.green("        AHQ Store Creation Tool          "));
+    console.log(chalk.green("       AHQ Store App Creation Tool       "));
     console.log(chalk.green("-----------------------------------------"));
 
     inquirer.prompt(

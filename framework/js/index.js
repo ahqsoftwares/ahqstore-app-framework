@@ -11,15 +11,7 @@ let max = 65535;
 
 let i = min;
 
-function mkPassword() {
-    let pwd = "";
-
-    for (let i = 0; i < 150; i++) {
-        pwd = String(Math.random()).replace(".", "0");
-    }
-
-    return pwd;
-}
+const mkPassword = () => String(Math.random()).replace(/0/g, Math.floor(Math.random() * 10)).replace(".", "0");
 
 function runWs() {
     const ws = new WebSocket(`ws://localhost:${i}`, {

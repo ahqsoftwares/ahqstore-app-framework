@@ -1,0 +1,25 @@
+{
+  "name": "store.js",
+  "version": "0.10.0-alpha-1",
+  "description": "The full stack package for interfacing with the AHQ Store Framework APi (Windows)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"No Test Command Exists\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahqsoftwares/ahqstore-app-framework.git"
+  },
+  "keywords": [
+    "framework",
+    "ahqstore",
+    "full",
+    "astore"
+  ],
+  "author": "AHQ",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ahqsoftwares/ahqstore-app-framework/issues"
+  },
+  "homepage": "https://github.com/ahqsoftwares/ahqstore-app-framework#readme"
+}

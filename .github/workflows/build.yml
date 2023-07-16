@@ -1,0 +1,166 @@
+name: Build AHQ Store Framework (+ Packages)
+
+on:
+  push:
+    paths: |
+      version.json
+
+jobs:
+  create_ahq_store:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install Packages
+        run: npm install
+        working-directory: create_ahq_store
+
+      - name: Publish Create AHQ Store
+        run: npm publish
+        working-directory: create_ahq_store
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  js_package_lite:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install Packages
+        run: npm install
+        working-directory: store_js_lite
+
+      - name: Publish Store JS
+        run: npm publish
+        working-directory: store_js_lite
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  js_package:
+    runs-on: ubuntu-latest
+    needs: [js_package_lite]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install Packages
+        run: npm install
+        working-directory: store_js
+
+      - name: Update Packages
+        run: npm up storejs.lite
+        working-directory: store_js
+
+      - name: Publish Store JS Lite
+        run: npm publish
+        working-directory: store_js
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  rust_package_core:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Rust
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+        with:
+          cache: false
+      
+      - name: Build Package
+        run: cargo publish
+        working-directory: store_rs_core
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_TOKEN }}
+
+  rust_package:
+    runs-on: windows-latest
+    needs: [rust_package_core]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Rust
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+        with:
+          cache: false
+
+      - name: Update Cargo Deps
+        run: cargo update --package ahq_store_rs_core
+        working-directory: store_rs
+
+      - name: Build Package
+        run: cargo publish
+        working-directory: store_rs
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_TOKEN }}
+
+  build_framework:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Rust
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+        with:
+          cache: false
+
+      - name: Build Framework
+        run: cargo build --release
+        working-directory: framework
+
+      - name: Zip JS
+        run: Compress-Archive ./js/* -DestinationPath ./js.zip
+        working-directory: framework/target/release
+
+      - name: Zip Node.JS Runtime
+        run: Compress-Archive ./node/* -DestinationPath ./node.zip
+        working-directory: framework/target/release
+
+      - name: Get Version
+        id: ver
+        uses: actions/github-script@v3
+        with:
+          result-encoding: string
+          script: |
+            return require("./version.json");
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ steps.ver.outputs.result }}
+          name: AHQ Store Framework v${{ steps.ver.outputs.result }}
+          body_path: ./LATEST.md
+          generate_release_notes: true
+          files: |
+            ./framework/target/release/node.zip
+            ./framework/target/release/js.zip
+            ./framework/target/release/framework.exe

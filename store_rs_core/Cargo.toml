@@ -1,9 +1,9 @@
 [package]
-name = "store_rs_core"
+name = "ahq_store_rs_core"
 description = "The core crate for interfacing with the AHQ Store Framework APi (Windows)"
 license = "MIT"
 authors = ["AHQ"]
-version = "0.1.0"
+version = "0.10.0-alpha-1"
 edition = "2021"
 repository = "https://github.com/ahqsoftwares/ahqstore-app-framework"
 

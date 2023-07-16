@@ -26,5 +26,7 @@ fn main() {
         .spawn()
     {
         let _ = x.wait();
+    } else {
+        println!("[RUST] Failed to start a new AHQ Store App Session");
     }
 }

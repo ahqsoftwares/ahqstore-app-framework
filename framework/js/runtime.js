@@ -1,10 +1,12 @@
 const {
     WebSocketServer
 } = require("ws");
+
 const { app, ipcMain } = require("electron");
 
 const app_id = process.env.electron_ws_port;
 const pass = process.env.electron_ws_pass;
+
 let connected = 0;
 let last_disc = Date.now();
 
@@ -27,7 +29,7 @@ setInterval(() => {
         app.quit();
         process.exit(0);
     }
-}, 3 * 60 * 1000);
+}, 60 * 1000);
 
 app.on("ready", () => {
     try {
@@ -41,10 +43,13 @@ app.on("ready", () => {
             let pwdclose = false;
 
             if (connected > 1) {
-                app.quit();
+                pwdclose = true;
+
+                stream.close();
+            } else {
+                ws = stream;
             }
 
-            ws = stream;
             stream.onclose = () => {
                 connected--;
                 last_disc = Date.now();
