@@ -2,11 +2,8 @@ name: Build AHQ Store Framework (+ Packages)
 
 on:
   push:
-    branches: [main]
-    paths: |
-      version.json
-      LATEST.md
-      .github
+    branches: |
+      - main
 
 jobs:
   create_ahq_store:
