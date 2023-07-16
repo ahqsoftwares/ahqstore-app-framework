@@ -155,7 +155,8 @@ jobs:
         with:
           result-encoding: string
           script: |
-            return require("./version.json");
+            const fs = require("fs");
+            return JSON.parse(String(fs.readFileSync("./version.json")));
 
       - name: Release
         uses: softprops/action-gh-release@v1

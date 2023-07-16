@@ -1,13 +1,13 @@
 pub struct App {
-    port: String,
-    password: String
+    _port: String,
+    _password: String
 }
 
 impl App {
     pub fn start() -> Self {
         Self {
-            port: String::from("8080"),
-            password: String::from("password")
+            _port: String::from("8080"),
+            _password: String::from("password")
         }
     }
 }
