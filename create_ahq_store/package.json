@@ -1,6 +1,6 @@
 {
   "name": "create-ahq-store",
-  "version": "0.10.0-alpha.1.7",
+  "version": "0.10.0-alpha.1.8",
   "description": "The creation tool for AHQ Store Apps",
   "main": "index.js",
   "scripts": {

@@ -6,7 +6,7 @@ authors = ["AHQ"]
 edition = "2021"
 repository = "https://github.com/ahqsoftwares/ahqstore-app-framework"
 
-version = "0.10.0-alpha.1.7"
+version = "0.10.0-alpha.1.8"
 
 [package.metadata.docs.rs]
 default-target = "x86_64-pc-windows-msvc"

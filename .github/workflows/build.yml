@@ -127,7 +127,7 @@ jobs:
         working-directory: store_rs
 
       - name: Build Main Crate
-        run: cargo publish
+        run: cargo publish --allow-dirty
         working-directory: store_rs
         env:
           CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_TOKEN }}
