@@ -122,8 +122,8 @@ jobs:
         with:
           cache: false
 
-      - name: Update Cargo Deps
-        run: cargo update --package ahq_store_rs_core
+      - name: Update AHQ Store RS Core
+        run: cargo remove ahq_store_rs_core; cargo add ahq_store_rs_core
         working-directory: store_rs
 
       - name: Build Main Crate
