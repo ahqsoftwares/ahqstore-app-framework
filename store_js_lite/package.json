@@ -1,8 +1,11 @@
 {
   "name": "ahqstorejs.lite",
-  "version": "0.10.0-alpha.1.1",
+  "version": "0.10.0-alpha.1.4",
   "description": "The core package for interfacing with the AHQ Store Framework APi (Windows)",
+  "type": "commonjs",
   "main": "index.js",
+  "module": "index.mjs",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "test": "echo \"No Test Command Exists\""
   },
@@ -21,5 +24,18 @@
   "bugs": {
     "url": "https://github.com/ahqsoftwares/ahqstore-app-framework/issues"
   },
-  "homepage": "https://github.com/ahqsoftwares/ahqstore-app-framework#readme"
+  "homepage": "https://github.com/ahqsoftwares/ahqstore-app-framework#readme",
+  "dependencies": {
+    "@types/ws": "^8.5.5",
+    "ws": "^8.13.0"
+  },
+  "devDependencies": {
+    "jsdoc": "^4.0.2",
+    "jsdoc-to-markdown": "^8.0.0",
+    "typescript": "^5.1.6"
+  },
+  "engineStrict": true,
+  "engines": {
+    "node": ">= 18"
+  }
 }

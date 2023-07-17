@@ -8,3 +8,5 @@ The Application Framework for **AHQ Store Apps** that allows you to create apps 
 # Steps to use it
 
 ## Node JS Edition
+
+## Rust Edition

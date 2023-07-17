@@ -1,4 +1,3 @@
 # Version 0.10.0
-
-- Test CI/CD
-- Initial Release
+This release includes the following features:
+- The 1st working version of the ahqstorejs.lite crate

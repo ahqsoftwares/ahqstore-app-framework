@@ -46,7 +46,13 @@ jobs:
         run: npm install
         working-directory: store_js_lite
 
-      - name: Publish Store JS
+      - name: Build .d.ts files
+        run: npx -p typescript tsc
+
+      - name: Document
+        run: node document.js
+
+      - name: Publish Store JS Lite
         run: npm publish
         working-directory: store_js_lite
         env:
@@ -75,7 +81,7 @@ jobs:
         run: npm up ahqstorejs.lite
         working-directory: store_js
 
-      - name: Publish Store JS Lite
+      - name: Publish Store JS
         run: npm publish
         working-directory: store_js
         env:
@@ -94,7 +100,7 @@ jobs:
         with:
           cache: false
       
-      - name: Build Package
+      - name: Build Core Crate
         run: cargo publish
         working-directory: store_rs_core
         env:
@@ -118,7 +124,7 @@ jobs:
         run: cargo update --package ahq_store_rs_core
         working-directory: store_rs
 
-      - name: Build Package
+      - name: Build Main Crate
         run: cargo publish
         working-directory: store_rs
         env:

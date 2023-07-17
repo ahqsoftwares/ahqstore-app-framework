@@ -30,7 +30,7 @@ function runWs() {
         const pass = mkPassword();
         const electron = path.join(__dirname, "node_modules", ".bin", "electron.cmd");
 
-        execSync(`powershell $env:electron_ws_pass = ${pass};$env:electron_ws_port = ${i}; start-process -WindowStyle Hidden "${electron}" runtime.js`, console.log);
+        execSync(`powershell $env:electron_ws_pass = ${pass};$env:electron_ws_port = ${i}; start-process -WindowStyle Hidden '${electron.replace(/\\/g, "/")}' runtime.js`, console.log);
         console.log(i, pass);
     }
 }

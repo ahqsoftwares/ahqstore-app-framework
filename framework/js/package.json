@@ -1,6 +1,6 @@
 {
   "name": "framework",
-  "version": "0.0.1",
+  "version": "0.10.0-alpha.1.4",
   "description": "The AHQ Store Framework ",
   "main": "runtime.js",
   "scripts": {
