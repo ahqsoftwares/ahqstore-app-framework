@@ -1,6 +1,6 @@
 {
   "name": "ahqstorejs.lite",
-  "version": "0.10.0-alpha.1.4",
+  "version": "0.10.0-alpha.1.6",
   "description": "The core package for interfacing with the AHQ Store Framework APi (Windows)",
   "type": "commonjs",
   "main": "index.js",

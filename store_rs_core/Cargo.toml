@@ -7,7 +7,7 @@ edition = "2021"
 repository = "https://github.com/ahqsoftwares/ahqstore-app-framework"
 readme = "README.md"
 
-version = "0.10.0-alpha.1.4"
+version = "0.10.0-alpha.1.6"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 

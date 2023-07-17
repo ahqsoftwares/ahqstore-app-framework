@@ -48,9 +48,11 @@ jobs:
 
       - name: Build .d.ts files
         run: npx -p typescript tsc
+        working-directory: store_js_lite
 
       - name: Document
         run: node document.js
+        working-directory: store_js_lite
 
       - name: Publish Store JS Lite
         run: npm publish
