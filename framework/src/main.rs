@@ -1,32 +1,7 @@
-use std::{
-    env::{args, current_exe},
-    process::Command,
-};
+mod app;
 
 fn main() {
-    let mut id = 0;
-    let args = args()
-        .filter(|_| {
-            id += 1;
-            id != 1
-        })
-        .collect::<Vec<String>>();
+  let application = app::start_app();
 
-    let exe = current_exe()
-        .unwrap()
-        .to_str()
-        .unwrap()
-        .to_string()
-        .replace("\\framework.exe", "");
-
-    if let Ok(mut x) = Command::new(format!("{}\\node\\node.exe", &exe))
-        .arg("index.js")
-        .args(args)
-        .current_dir(format!("{}\\js", &exe))
-        .spawn()
-    {
-        let _ = x.wait();
-    } else {
-        println!("[RUST] Failed to start a new AHQ Store App Session");
-    }
+  application.application.run(|_, _, _| {});
 }
