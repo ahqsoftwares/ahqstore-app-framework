@@ -6,6 +6,9 @@ use wry::application::event_loop::{EventLoop, EventLoopBuilder, EventLoopProxy};
 mod structs;
 pub use structs::*;
 
+pub type ServerReceiver = Receiver<Command<CommandEnum>>;
+pub type DaemonProxy = EventLoopProxy<CommandEnum>;
+
 pub struct Application<T: ChannelCommand + Serialize + 'static> {
   pub tx: Sender<Command<T>>,
   pub rx: Receiver<Command<T>>,
